@@ -31,13 +31,14 @@ function App() {
     } else {
       setReviews({
         ...reviews,
-        [feedbackType]: (reviews[feedbackType] += 1),
+        [feedbackType]: reviews[feedbackType] + 1,
       });
     }
   }
 
   const totalFeedback = reviews.good + reviews.neutral + reviews.bad;
-  const totalPositive = Math.round((reviews.good / totalFeedback) * 100);
+  const totalPositive =
+    totalFeedback > 0 ? Math.round((reviews.good / totalFeedback) * 100) : 0;
 
   return (
     <>
